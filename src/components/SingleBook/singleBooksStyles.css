@@ -1,0 +1,26 @@
+/*table design - start*/
+.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+    /* margin: 5px; */
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #e6e1e1;
+  }
+  
+  .table .description{
+    width: 900px;
+  }
+  /*table design - end*/
+
+  .singleBookTitle{
+    display: flex;
+  }
