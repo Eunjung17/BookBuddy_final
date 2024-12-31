@@ -50,7 +50,7 @@ const Reservations = ({token, setToken, setChangeFlag}) => {
                         sortedBookList.map((p) => (
                         <tr key={p.id}>
                             <th scope="row">{p.id}</th>
-                            <td><h5><Link to={`/SingleBook/${p.id}`}>{p.title}</Link></h5></td>
+                            <td><h5>{p.title}</h5></td>
                             <td> <img className = "bookCoverSize" src={p.coverimage} alt={p.name} /></td>
                             <td><h6>{p.author}</h6></td>
                             <td>{p.description}</td>
