@@ -1,4 +1,4 @@
-import { api } from '../api/booksApi';
+import { api } from '../api';
 
 const singleBookApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -8,10 +8,27 @@ const singleBookApi = api.injectEndpoints({
         url: `/books/${id}`,
         method: 'GET',
       }),
+      providesTags: ['Books'],
     }),
+
+    updateBookAvailability: builder.mutation({
+      query: (value)=>({
+        url: `/books/${value.id}`,
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization' : `Bearer ${value.token}`,
+        },
+        body: {
+          available : false,
+        },
+      }),
+      invalidatesTags: ['Books'],
+    }),
+
+
   }),
-  providesTags: ['Books'],
 });
 
 export default singleBookApi;
-export const { useGetSingleBookQuery } = singleBookApi;
+export const { useUpdateBookAvailabilityMutation, useGetSingleBookQuery } = singleBookApi;

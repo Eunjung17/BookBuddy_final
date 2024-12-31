@@ -24,3 +24,8 @@
   .singleBookTitle{
     display: flex;
   }
+
+  .titlePosition{
+    display: flex;
+    margin-bottom: 5%;
+  }

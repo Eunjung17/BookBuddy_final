@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import './BooksStyles.css'
 
 
-const Books = () => {
-  const { data: books, isLoading, isSuccess } = useGetBooksQuery();
-  
-  console.log("books, isLoading, isSuccess: ", books, isLoading, isSuccess);
+const Books = ({token, setToken, changeFlag}) => {
+  const { data: books, isLoading, isSuccess, refetch} = useGetBooksQuery();
+
+  useEffect(()=>{
+    refetch();
+  },[changeFlag]);
+
   const bookList = books?.books;
   let sortedBookList = bookList ? [...bookList].sort((a, b) => a.id - b.id) : [];
 
@@ -27,7 +30,6 @@ const Books = () => {
     <>
 
         <div className="search-container">
-        {/* <form action="/action_page.php"> */}
         <input type="text" placeholder="Search.." name="search" onChange={(e) => setSearchWord(e.target.value)}/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div className="status">
         <select  name="status" value={option} onChange={(e) => setOption(e.target.value)}>
@@ -36,17 +38,15 @@ const Books = () => {
             <option value="id">Id</option>
         </select>
         </div>
-        {/* </form> */}
         </div>
 
-          <table className="table">
+          <table className="table table-hover">
             <thead>
               <tr>
                 <th scope="col"># ID</th>
                 <th scope="col">TITLE</th>
                 <th scope="col">Cover Image</th>
                 <th scope="col">AUTHOR</th>
-                {/* <th className="description" scope="col">Description</th> */}
                 <th scope="col">Available</th>
               </tr>
             </thead>
@@ -59,8 +59,7 @@ const Books = () => {
                     <td><h5><Link to={`/SingleBook/${p.id}`}>{p.title}</Link></h5></td>
                     <td> <img className = "bookCoverSize" src={p.coverimage} alt={p.name} /></td>
                     <td><h6>{p.author}</h6></td>
-                    {/* <td>{p.description}</td> */}
-                    <td>{p.available === "false" ? "NO": "Yes"}</td>
+                    <td>{p.available === false ? "NO": "Yes"}</td>
                   </tr>
                       ))
                     ) : (

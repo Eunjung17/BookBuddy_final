@@ -1,0 +1,29 @@
+.registerForm {
+    width: 70%;
+    padding: 5%;
+}
+
+.loginForm{
+    width: 50%;
+    padding: 5%; 
+}
+
+.alertSize{
+    width: 20px;
+}
+
+.EmailPwd{
+    display: grid;
+}
+
+.Pwd{
+    display: flex;
+    
+}
+
+.tableWidth {
+    margin-top: 5%; 
+    margin-left: 5%;
+    margin-right: 30%;
+}
+

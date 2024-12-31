@@ -1,4 +1,4 @@
-import { api } from "../api/booksApi";
+import { api } from "../api";
 
 const booksApi = api.injectEndpoints({
   endpoints: (builder) => ({
